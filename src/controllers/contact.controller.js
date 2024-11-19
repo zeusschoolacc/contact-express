@@ -40,13 +40,13 @@ exports.create = (req, res) => {
 
 exports.update = (req, res) => {
     const { id } = req.params;
-    const {first_name, last_name, email_add, contact_num, is_deleted} = req.body;
+    const {first_name, last_name, email_add, contact_num} = req.body;
 
     console.log(req.body);
 
-    if (!id || !first_name || !last_name || !email_add || !contact_num || !is_deleted) return res.status(400).send({message: "Error", body: req.body});
+    if (!id || !first_name || !last_name || !email_add || !contact_num) return res.status(400).send({message: "Error", body: req.body});
     
-    Contact.updateContact(id, first_name, last_name, email_add, contact_num, is_deleted, (err) => {
+    Contact.updateContact(id, first_name, last_name, email_add, contact_num, (err) => {
         if(err) {
             return res.status(400).send({message: "Error"});
         }
